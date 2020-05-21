@@ -1,0 +1,138 @@
+{
+  "name": "metroidvaniajam",
+  "ogmoVersion": "3.3.0",
+  "levelPaths": ["."],
+  "backgroundColor": "#282c34ff",
+  "gridColor": "#3c4049cc",
+  "anglesRadians": true,
+  "directoryDepth": 5,
+  "layerGridDefaultSize": {"x": 8, "y": 8},
+  "levelDefaultSize": {"x": 320, "y": 240},
+  "levelMinSize": {"x": 128, "y": 128},
+  "levelMaxSize": {"x": 4096, "y": 4096},
+  "levelValues": [],
+  "defaultExportMode": ".json",
+  "compactExport": false,
+  "externalScript": "",
+  "playCommand": "",
+  "entityTags": [],
+  "layers": [
+    {
+      "definition": "tile",
+      "name": "collisions",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "60892132",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": "map"
+    },
+    {
+      "definition": "tile",
+      "name": "base",
+      "gridSize": {"x": 32, "y": 32},
+      "exportID": "60614475",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": "map"
+    },
+    {
+      "definition": "entity",
+      "name": "entities",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "67774500",
+      "requiredTags": [],
+      "excludedTags": []
+    },
+    {
+      "definition": "tile",
+      "name": "background",
+      "gridSize": {"x": 8, "y": 8},
+      "exportID": "71161586",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": "map"
+    }
+  ],
+  "entities": [
+    {
+      "exportID": "68003227",
+      "name": "player",
+      "limit": -1,
+      "size": {"x": 32, "y": 48},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": true,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": [],
+      "values": [],
+      "texture": "../../art/player/player1.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA+FJREFUaIHtmk9IFFEcx79jDuJaC7kigopk4CVlFYQ0KTrkIggdgjp48FCnyL106WKH8NLdQyevIXgLglghBCn0lMPaZUlFEpSlLZhsVAZ9HfQ3vnnz5s/+mWeHviD45s3M+/z+vPd+b3eB/7pYadU8nEvPMr6dMbJVva8S1VfyEIGP9D52Xwccg1QZU5YBfuB1xU3nf+rLAUyFEZEHyKVnmQgOnMIvF5cAACOfn+LTrTcA1EUg0iAiPHmcwJvnJgAAyWQC7e06mprqlc2F0BTi4flUWS4uucAB4OHaBhZwPQ5OX9VFvrG4iZPWbgByeF6FwgHzXIxJgRHIpWfZ7da7wBk8HwHAC7/Qf+r9np5GZSkUKQIifPPchNTzFyFfAxzvczpp7cZycQk/n7z1faFpWrWji6DACFDOk/fFFBJlmhYGB1NKd+PIKQScL5uiTNO6EHggxAA/z2eMrEapQuAXAQ8EGJAxshrvcdH7Dx69wr2xF2UNZs6YNV9eI6UQD58xslpC73FA7gwPg2+LImge3pwxWa2MCQ37aN5ii30JLZeedYqzhN7DWjrHXPf9+P4Bll3wvI9A9bQOALAN2+lLvkxWnXaBy+ho3mLvnm9gNG+54DW9w3N/S+eYbyQInlct4AHJTsyXzCOvT3kW+xKewUp760i19Qa+3JwxmQivp3VXFKqVywBZ4ea3dDY0XMH+r20AwOWrXb4D2IbtikAt4QFJCoVtVqKOjn6jtLcu7aM0sQ3b+SPVahK7DKClk/e+38FkZXUeK6vzABCYSqXpKZSmp5w2GRXbHIiiL2vvPddkq9AWm2QAsH+4i2sccK3gAYkBGSOr0UQOOxYO9I/79vHwfY2Lse3S0ggEga99NSK/fP9wtwKk8hT5RCaK9744ibfYJCP4OL0PVGGAbB6QVHieVJZ3aBcW4Qf6x8HsHVh2QaPz8FHn/di9D1RoABAcAZKKs3HkFBJroKAVSKUie4gMoE2Ln7iUPvmDUQbEP3F5RdrI/ODP20De7FIOD5SRQqm2XmnN41cHqVJoBOjwQuWzrIxeKV0CANxMbsdDGaBIEfCr/UXva3pH4PEyDgUaIOY+4K08yftDqeMY8MIVGoFyc191FDwG0OD8ui+uPjz8UOrY8T7dp9II1yQm6ATgSR0CFJdQQD5HNL0DsAtxcTuSphDBix73rv/yNgD8sT6q/4pJNmllHufFL6/A+a4cF7Aoz0Cyz30IkNk7pw+d9VObl0p4wKcW8puAdBrrv5EGAFf5rPJbGV7SnTjAiyykX7kqPpH9KyrrY5XOZ98iXVOpslKB/3EHfXIhu6ZSfwH2S+khVxTuMAAAAABJRU5ErkJggg=="
+    },
+    {
+      "exportID": "93446804",
+      "name": "enemy",
+      "limit": -1,
+      "size": {"x": 32, "y": 64},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": true,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": [],
+      "values": [],
+      "texture": "../../art/enemy/enemy.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAABACAYAAAB7jnWuAAAAAXNSR0IArs4c6QAAAXxJREFUaIHtmUEOwjAMBAvlUKkP4f/P4cgHuCEhIVROSFGUxLvOmqiCvbVN67Hj1k46TX/9ug7M4HWZt/zc/fGinuEGKBlXgJg3WYZ7IZo3MMa9EEelcY+qtCnAJTl/Bh+MRqIagZLx0nFNaARNgB4hEBDA7XkNgwjLgVStfDghD/AYRRWaA/sG6C0yqKS1oCTLEVk19BinABgIZvqg11BpMNfwt4AmZ9uydHxpnASAUQ7x9SnIHXAlj6Jb+kTCFQHlV9IFoOwXaQC2TbeiRQFEdMoQwLrMW8t4zUtJTxi1JIMBUOMtkPxaeuwuRqzntfFmBEo3MsatKYQiENmeSWuBB3R4PyAF8HyohkdAllw176W1gDWOKHQK5OuCXJ4ClcsdAVVpDukJmQ9SaEcUAqDWPloyVgxo2BTINyqj9o6HJyH0vvZ4371HpFyIljR8CpoArPeeFRK0tVIypNq2o6fASirJPyOkvWqFO7QaqiVbnFrXamPhJOzZC2zpDfwZyOdBcySOAAAAAElFTkSuQmCC"
+    }
+  ],
+  "tilesets": [
+    {"label": "map", "path": "tilesets/tiles.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAAAXNSR0IArs4c6QAAAW9JREFUeJzt1DEBgEAQBDEeNxjBFDWmMIIckHHFJAZ2q1nbvG9y/L2eyfntuM81eoC0ffoAMEcAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACJ+tT8EQCMfXKoAAAAASUVORK5CYII=", "tileWidth": 32, "tileHeight": 32, "tileSeparationX": 0, "tileSeparationY": 0},
+    {"label": "New Tileset", "path": "tilesets/collisions.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAFxJREFUeJzt0MEJgEAQBEHP4MSIDMKIxOQ0iBPaR9V/2WbGMunct2fm/rjuMdswYy2f/4EB6oCaAeqAmgHqgJoB6oCaAeqAmgHqgJoB6gAAAAAAAAAAAAAAAICvvaIqBCCOnmDeAAAAAElFTkSuQmCC", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0}
+  ]
+}
