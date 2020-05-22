@@ -30,7 +30,7 @@ class PlayState extends FlxState
 
 		bgColor = FlxColor.PURPLE;//FlxColor.setRGB(130, 55, 200, 255);
 
-		SpritesheetTexture = FlxAtlasFrames.fromTexturePackerJson(AssetPaths.spritesheet__png, AssetPaths.spritesatlas__json);
+		SpritesheetTexture = FlxAtlasFrames.fromTexturePackerJson(AssetPaths.spritesheet__png, AssetPaths.spritesheet__json);//FlxAtlasFrames.fromTexturePackerJson(AssetPaths.spritesheet__png, AssetPaths.spritesatlas__json);
 
 		map = new FlxOgmo3Loader(AssetPaths.levels__ogmo, AssetPaths.level1__json);
 
@@ -47,8 +47,8 @@ class PlayState extends FlxState
 
 		enemies = new FlxGroup();
 
-		FlxG.debugger.visible = true;
-		FlxG.debugger.drawDebug = true;
+		//FlxG.debugger.visible = true;
+		//FlxG.debugger.drawDebug = true;
 		
 
 		map.loadEntities(placeEntities, "entities");
