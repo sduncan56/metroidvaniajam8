@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "version": "0.6.5"
+  },
+  "savePath": "/home/shane/Documents/dev/metroidvaniajam/assets/atlas",
+  "images": [],
+  "folders": [
+    "/home/shane/Documents/dev/metroidvaniajam/art/enemy",
+    "/home/shane/Documents/dev/metroidvaniajam/art/magic",
+    "/home/shane/Documents/dev/metroidvaniajam/art/player"
+  ],
+  "packOptions": {
+    "textureName": "spritesheet",
+    "textureFormat": "png",
+    "removeFileExtension": false,
+    "prependFolderName": true,
+    "base64Export": false,
+    "tinify": false,
+    "tinifyKey": "",
+    "scale": 1,
+    "disableSmoothing": false,
+    "filter": "none",
+    "exporter": "JSON (hash)",
+    "fileName": "pack-result",
+    "savePath": "/home/shane/Documents/dev/metroidvaniajam/assets/atlas",
+    "width": 2048,
+    "height": 2048,
+    "fixedSize": false,
+    "powerOfTwo": true,
+    "padding": 0,
+    "extrude": 0,
+    "allowRotation": true,
+    "allowTrim": true,
+    "trimMode": "trim",
+    "alphaThreshold": "0",
+    "detectIdentical": true,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit"
+  }
+}

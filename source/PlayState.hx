@@ -47,7 +47,7 @@ class PlayState extends FlxState
 
 		enemies = new FlxGroup();
 
-		//FlxG.debugger.visible = true;
+	    //FlxG.debugger.visible = true;
 		//FlxG.debugger.drawDebug = true;
 		
 
@@ -61,6 +61,7 @@ class PlayState extends FlxState
 		{
 			case "player":
 				player = new Player(entity.x, entity.y, entity.flippedX);
+				player.setOffsets();
 				add(player);
 				camera.follow(player);
 			case "enemy":

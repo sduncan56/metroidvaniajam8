@@ -8,7 +8,7 @@ import flixel.effects.particles.FlxParticle;
 
 class AmbientParticleEmitter extends FlxTypedEmitter<AmbientMagicParticle>
 {
-    private var clusterPoint:Point;
+    public var clusterPoint:Point;
     private var range:Float;
     private var randomNumberGen:FlxRandom;
     public function new(_clusterPoint:Point, _range:Float)
@@ -16,6 +16,8 @@ class AmbientParticleEmitter extends FlxTypedEmitter<AmbientMagicParticle>
         super();
         clusterPoint = _clusterPoint;
         range = _range;
+
+        particleClass = AmbientMagicParticle;
 
         randomNumberGen = new FlxRandom();
     }
@@ -39,11 +41,11 @@ class AmbientParticleEmitter extends FlxTypedEmitter<AmbientMagicParticle>
 
     override public function update(elapsed:Float)
     {
-        var r2 = 180*Math.PI/180;
+        // var r2 = 180*Math.PI/180;
 
-        var a:Float = randomNumberGen.float(0, 6.2);
-        x = clusterPoint.x + range+50 * Math.cos(a);
-        y = clusterPoint.y + range+50 * Math.sin(a);
+        // var a:Float = randomNumberGen.float(0, 6.2);
+        // x = clusterPoint.x + range+50 * Math.cos(a);
+        // y = clusterPoint.y + range+50 * Math.sin(a);
 
         super.update(elapsed);
     }
@@ -55,12 +57,19 @@ class AmbientMagicParticle extends FlxParticle
     private var clusterPoint:Point;
     private var range:Float;
 
-    public function new(_clusterPoint:Point, _range:Float) {
+    public function new(?_clusterPoint:Point, ?_range:Float) {
         super();
 
+        init(_clusterPoint, _range);
+
+
+        
+    }
+
+    public function init(_clusterPoint:Point, _range:Float)
+    {
         clusterPoint = _clusterPoint;
         range = _range;
-        
     }
 
     override public function update(elapsed:Float)
