@@ -1,5 +1,8 @@
 package;
 
+import flixel.tweens.FlxTween;
+import flixel.tile.FlxTile;
+import flixel.FlxCamera.FlxCameraFollowStyle;
 import entities.MagicBullet;
 import entities.Entity;
 import effects.StunnedShader.StunnedEffect;
@@ -15,6 +18,11 @@ import flixel.FlxState;
 import entities.Player;
 import entities.Enemy;
 
+enum CameraPosition {
+	Bottom;
+	Centre;
+}
+
 class PlayState extends FlxState
 {
 	public static var SpritesheetTexture:FlxAtlasFrames;
@@ -22,6 +30,9 @@ class PlayState extends FlxState
 	public var enemies:FlxGroup;
 	var map:FlxOgmo3Loader;
 	var walls:FlxTilemap;
+	var cameraMap:FlxTilemap;
+
+	var moveTween:FlxTween;
 
 
 	override public function create():Void
@@ -45,6 +56,8 @@ class PlayState extends FlxState
 		var base:FlxTilemap = map.loadTilemap(AssetPaths.tiles__png, "base");
 		add(base);
 
+		cameraMap = map.loadTilemap(AssetPaths.collisions__png, "camera");
+
 		enemies = new FlxGroup();
 
 	    //FlxG.debugger.visible = true;
@@ -63,7 +76,10 @@ class PlayState extends FlxState
 				player = new Player(entity.x, entity.y, entity.flippedX);
 				player.setOffsets();
 				add(player);
-				camera.follow(player);
+				camera.follow(player, FlxCameraFollowStyle.PLATFORMER, 1);
+				changeCameraPos(Bottom, false);
+				//camera.targetOffset.set(0, -(FlxG.stage.height/2)+150);
+
 			case "enemy":
 				var enemy = new Enemy(entity.x, entity.y, entity.flippedX);
 				
@@ -73,6 +89,27 @@ class PlayState extends FlxState
 
 
 			default:
+		}
+	}
+
+	public function changeCameraPos(pos:CameraPosition, ?tween:Bool=true)
+	{
+		switch (pos) {
+			case Bottom:
+				if (tween)
+				{
+					if (moveTween == null || !moveTween.active)
+					    moveTween = FlxTween.tween(camera.targetOffset, {x:0, y:-(FlxG.stage.height/2)+player.height*2+30}, 0.7);
+		        }
+				else
+				    camera.targetOffset.set(0, -(FlxG.stage.height/2)+player.height*2+30);
+			case Centre:
+				if (tween){
+					if (moveTween == null || !moveTween.active)
+						moveTween = FlxTween.tween(camera.targetOffset, {x:0, y:0}, 0.7);
+                }else
+					camera.targetOffset.set(0,0);
+			
 		}
 	}
 
@@ -96,6 +133,9 @@ class PlayState extends FlxState
 		FlxG.collide(enemies, walls);
 		FlxG.overlap(player, enemies, playerEnCol);
 		FlxG.overlap(player.magicBullets, enemies, magicHitEnemy);
+
+		cameraMap.overlapsWithCallback(player, cameraChangePointHit);
+		//FlxG.overlap(player, cameraMap, cameraChangePointHit);
 		//FlxG.overlap(player.)
 
 
@@ -137,6 +177,24 @@ class PlayState extends FlxState
 
 	public function playerEnCol(player:Player, enemy:Enemy)
 	{
+
+	}
+
+	public function cameraChangePointHit(obj:FlxObject, player:FlxObject):Bool
+	{
+		var tile = cast(obj, FlxTile);
+
+		switch (tile.index)
+		{
+			case 2:
+				changeCameraPos(Centre);
+			case 3:
+				changeCameraPos(Bottom);
+
+		}
+
+
+		return false;
 
 	}
 }

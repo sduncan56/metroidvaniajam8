@@ -30,7 +30,10 @@ class Player extends Entity
 
     private var chargeEmitter1:AmbientParticleEmitter;
 
-    private var flipOffset:Int = 13; 
+    private var flipOffset:Int = 13;
+
+    private var wandOffsetPositions:Map<Int, Point>; 
+
     public function new(x:Float, y:Float, flipped:Bool) {
         super(x, y, flipped);
 
@@ -51,21 +54,45 @@ class Player extends Entity
         animation.addByNames("charging_-80", ["player/player6.png"], 1, false);
         animation.addByNames("charging_-90", ["player/player6.png"], 1, false);
 
+        animation.addByNames("charging_10", ["player/player2.png"], 1, false);
+
+        animation.addByNames("charging_20", ["player/player7.png"], 1, false);
+        animation.addByNames("charging_30", ["player/player7.png"], 1, false);
+
+        animation.addByNames("charging_40", ["player/player8.png"], 1, false);
+        animation.addByNames("charging_50", ["player/player8.png"], 1, false);
+
+        animation.addByNames("charging_60", ["player/player9.png"], 1, false);
+        animation.addByNames("charging_70", ["player/player9.png"], 1, false);
+
+        animation.addByNames("charging_80", ["player/player10.png"], 1, false);
+        animation.addByNames("charging_90", ["player/player10.png"], 1, false);
+
+
+
+
+
 
         animation.addByNames("fire_magic", ["player/player1.png"], 1, false);
 
-
-
-        //offset.x = tx.offset.x;
-        //offset.y = tx.offset.y;
-
-
-       // offset.x = 4;
-        //width -= 8;
-        //origin.x -= 16;
-        //offset.x -= 16;
-
         wandPoint = new Point(x+width, y+height/2);
+
+
+        //offsetting from the centre of the sprite because whythe fuck not.
+        wandOffsetPositions = [
+            -90=>new Point(-10, -100),
+            -80=>new Point(0, -80),
+            -70=>new Point(10, -70),
+            -60=>new Point(30, -60),
+            -50=>new Point(40, -50),
+            -40=>new Point(40, -40),
+            -30=>new Point(40, -10),
+            -20=>new Point(40, -10),
+            -10=>new Point(40, 0),
+            0 => new Point(40, 0),
+            10=> new Point(40, 0),
+
+        ];
 
         chargeEmitter1 = new AmbientParticleEmitter(wandPoint, 50);
         chargeEmitter1.visible = false;
@@ -83,7 +110,9 @@ class Player extends Entity
     {
         var tx = PlayState.SpritesheetTexture.getByName("player/player1.png");
         width = tx.frame.width;
-        y -= tx.offset.y;
+        height = tx.frame.height;
+        offset.y += tx.offset.y;
+        //y -= tx.offset.y;
     
 
     }
@@ -148,11 +177,46 @@ class Player extends Entity
 
             var rounded = Math.round(degrees/10)*10;
 
+
+            var wandAngleLookup = [
+                50 => 45,
+                40 => 45,
+                0 => -20,
+            ];
+
+            var roundedRadians = rounded*(Math.PI/180);
+
+
+            if (wandAngleLookup.exists(rounded))
+                roundedRadians = wandAngleLookup[rounded]*(Math.PI/180);
+            else if (rounded < 0 && wandAngleLookup.exists(rounded*-1))
+                roundedRadians = wandAngleLookup[rounded*-1]*-1*(Math.PI/180);
+
+            //chargeEmitter1.clusterPoint = (wandOffsetPositions[rounded]);
+            // if (facing == FlxObject.RIGHT)
+            // {
+            //     chargeEmitter1.setPosition(x+width+wandOffsetPositions[rounded].x, y+height/2+wandOffsetPositions[rounded].y);
+
+            // }
+
+            var emitterX = x+width/2-30 + 100 * Math.cos(aimAngle);
+            var emitterY = y+height/2-10 + 100 *Math.sin(aimAngle);
+            chargeEmitter1.setPosition(emitterX, emitterY);
+
+            wandPoint.x = x+width/2 + 20 * Math.cos(roundedRadians);
+            wandPoint.y = y+height/2 +10 + 20 *Math.sin(roundedRadians);
+
             if (rounded < -90)
             {
                 rounded += (rounded-(-90))*-2;
 
             }
+            else if (rounded > 90)
+            {
+                rounded -= (rounded-90)*2;
+            }
+
+            
 
             animation.play("charging_"+rounded);
             //resetSizeFromFrame();
